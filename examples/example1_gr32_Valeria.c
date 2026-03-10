@@ -1,19 +1,21 @@
 #include <stdio.h>
-#include "sqlite3.h" 
+#include "interface.h"
 
-int main(int argc, char* argv[]) {
-   sqlite3 *db;
-   int rc;
+int main() {
+    int n = 3; // Для теста возьмем 3, в задании 10
+    STUDENT students[n];
 
-   rc = sqlite3_open("test.db", &db);
+    for (int i = 0; i < n; i++) {
+        printf("Enter name for student %d: ", i + 1);
+        scanf("%s", students[i].name);
+        printf("Enter kurs: ");
+        scanf("%d", &students[i].kurs);
+        printf("Enter 5 grades: ");
+        for (int j = 0; j < 5; j++) scanf("%d", &students[i].ses[j]);
+    }
 
-   if( rc ) {
-      fprintf(stderr, "Ошибка открытия БД: %s\n", sqlite3_errmsg(db));
-      return(0);
-   } else {
-      fprintf(stdout, "База данных открыта успешно\n");
-   }
+    sort_students(students, n);
+    print_high_achievers(students, n);
 
-   sqlite3_close(db);
-   return 0;
+    return 0;
 }
