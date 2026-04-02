@@ -1,0 +1,27 @@
+<div id='Block'>  
+<p>Конвенция о запрещении химического оружия предусматривает возможность проведения инспекций по запросу.</p> 
+<p>Инспекция по запросу может проводиться в любом государстве-участнике по запросу другого государства-участника без права отказа с целью прояснения или разрешения любого вопроса, касающегося возможного несоблюдения <b>Конвенции</b>.</p> 
+<p>Запрашивающее инспекцию государство обязано ограничивать запрос на инспекцию рамками <b>Конвенции</b> и представлять в запросе всю соответствующую информацию, на основе которой возникла озабоченность.</p> 
+</div> 
+
+<input type='button' onclick='InsertTag()' 
+  value='вставка нового элемента-тега'> 
+
+<script> 
+function InsertTag() { 
+  const block = document.getElementById('Block');
+  const paragraphs = block.getElementsByTagName('p');
+  
+  if (paragraphs.length > 0) {
+    const lastParagraph = paragraphs[paragraphs.length - 1];
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = 'Это новый абзац, добавленный перед последним абзацем.';
+    block.insertBefore(newParagraph, lastParagraph);
+  }
+  
+  const boldElements = document.getElementsByTagName('b');
+  for (let i = 0; i < boldElements.length; i++) {
+    boldElements[i].style.color = 'blue';
+  }
+} 
+</script>
